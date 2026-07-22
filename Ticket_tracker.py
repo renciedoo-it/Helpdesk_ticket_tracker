@@ -1,45 +1,6 @@
+from ticket import Ticket
+from storage import load_tickets, save_tickets
 
-import json
-import os
-
-class Ticket:
-    def __init__(self, ticket_id, title, description, status="open"):
-        self.id = ticket_id
-        self.title = title
-        self.description = description
-        self.status = status
-
-    def close(self):
-        self.status = "closed"
-
-    def display(self):
-        print(f"ID: {self.id} | Title: {self.title} | Description: {self.description} | Status: {self.status}")
-
-    def to_dict(self):
-        return {"id": self.id, "title": self.title, "description": self.description, "status": self.status}
-       
-
-FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tickets.json")
-
-def load_tickets():
-    try:
-        with open(FILE_PATH, "r") as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        return []
-
-    loaded_tickets = []
-    for t in data:
-        loaded_tickets.append(Ticket(t["id"], t["title"], t["description"], t["status"]))
-    return loaded_tickets
-
-def save_tickets(tickets):
-    dict_list = []
-    for ticket in tickets:
-        dict_list.append(ticket.to_dict())
-
-    with open(FILE_PATH, "w") as file:
-        json.dump(dict_list, file, indent=4)
 
 tickets = load_tickets()
 
@@ -95,8 +56,8 @@ while True:
                 ticket.display()
                 found = True
 
-            if not found:
-                print("Ticket not found.")
+        if not found:
+            print("Ticket not found.")
     
     elif choice == "4":
         close_input = input("Enter Ticket ID to close: ")
