@@ -13,7 +13,7 @@ def load_tickets():
 
     load_tickets = []
     for t in data:
-        load_tickets.append(Ticket(t["id"], t["title"], t["description"], t["status"],))
+        load_tickets.append(Ticket(t["id"], t["title"], t["description"], t["status"], t.get("created_at"), t.get("closed_at")))
     return load_tickets
 
 def save_tickets(tickets):

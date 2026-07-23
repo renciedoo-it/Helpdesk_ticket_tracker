@@ -15,6 +15,7 @@ while True:
     choice = input("Choose your option: ")
 
     if choice == "1":
+        
         title = input("Enter ticket title: ")
 
         if title.strip() == "":
