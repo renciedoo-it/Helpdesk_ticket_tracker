@@ -1,32 +1,18 @@
 [
     {
         "id": 1,
-        "title": "Keyboard malfunction",
-        "description": "Space bar is not working",
-        "status": "closed"
+        "title": "Monitor problem",
+        "description": "no display",
+        "status": "open",
+        "created_at": "07/23/2026 15:29",
+        "closed_at": null
     },
     {
         "id": 2,
-        "title": "Laptop problem",
-        "description": "Unable to boot",
-        "status": "closed"
-    },
-    {
-        "id": 3,
-        "title": "Printer",
-        "description": "It keeps having jam paper.",
-        "status": "closed"
-    },
-    {
-        "id": 4,
         "title": "Network problem",
-        "description": "No network connection",
-        "status": "open"
-    },
-    {
-        "id": 5,
-        "title": "No network connection",
-        "description": "LAN is not working",
-        "status": "closed"
+        "description": "No LAN connection 4a-021",
+        "status": "closed",
+        "created_at": "07/23/2026 15:30",
+        "closed_at": "07/23/2026 15:30"
     }
 ]

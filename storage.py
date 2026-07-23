@@ -12,14 +12,10 @@ def load_tickets():
         return []
 
     load_tickets = []
-    for t in data:
-        load_tickets.append(Ticket(t["id"], t["title"], t["description"], t["status"], t.get("created_at"), t.get("closed_at")))
-    return load_tickets
+    return [Ticket(t["id"], t["title"], t["description"],t["status"], t.get("created_at"), t.get("closed_at")) for t in data]
 
 def save_tickets(tickets):
-    dict_list = []
-    for ticket in tickets:
-        dict_list.append(ticket.to_dict())
+    dict_list = [ticket.to_dict() for ticket in tickets]
 
     with open(FILE_PATH, "w") as file:
         json.dump(dict_list, file, indent=4)
