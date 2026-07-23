@@ -15,7 +15,7 @@ while True:
     choice = input("Choose your option: ")
 
     if choice == "1":
-        
+
         title = input("Enter ticket title: ")
 
         if title.strip() == "":
@@ -36,7 +36,9 @@ while True:
     elif choice == "2":
         print("\nTicket List: ")
 
-        for ticket in tickets:
+        sorted_tickets = sorted(tickets, key=lambda t: t.created_at)
+
+        for ticket in sorted_tickets:
             ticket.display()
     
     elif choice == "3":
