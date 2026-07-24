@@ -1,5 +1,12 @@
 from ticket import Ticket
 from storage import load_tickets, save_tickets
+import logging
+
+logging.basicConfig(
+    filename="app.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 tickets = load_tickets()
@@ -32,6 +39,7 @@ while True:
         new_ticket = Ticket(ticket_id, title, description)
         tickets.append(new_ticket)
         save_tickets(tickets)
+        logging.info(f"Ticket {ticket_id} created: {title}")
 
     elif choice == "2":
         print("\nTicket List: ")
@@ -49,6 +57,7 @@ while True:
             search_id = int(search_input)
         except ValueError:
             print("Invalid input. Please enter a valid Ticket ID.")
+            logging.error(f"Invalid Ticket ID input: {search_input}")
             continue
         
 
@@ -69,6 +78,7 @@ while True:
             close_id = int(close_input)
         except ValueError:
             print("Invalid input. Please enter a valid Ticket ID.")
+            logging.error(f"Invalid Ticket ID input: {search_input}")
             continue
 
         found = False
@@ -76,6 +86,7 @@ while True:
         for ticket in tickets:
             if ticket.id == close_id:
                 ticket.close()
+                logging.info(f"Ticket {close_id} closed.")
                 print(f"Ticket ID {close_id} has been closed.")
                 found = True
                 save_tickets(tickets)
