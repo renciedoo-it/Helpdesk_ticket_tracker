@@ -1,2 +1,6 @@
 __pycache__/
 app.log
+dist/
+build/
+*.spec
+tickets.db

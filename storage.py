@@ -1,8 +1,14 @@
 import sqlite3
+import sys
 import os
 from ticket import Ticket
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tickets.db")
+if getattr(sys, 'frozen', False):
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_PATH = os.path.join(BASE_DIR, "tickets.db")
 
 def get_connection():
     return sqlite3.connect(DB_PATH)
